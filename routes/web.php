@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\Web\Dashboard\DashboardController;
+use App\Http\Controllers\Web\User\RoleController;
+use App\Http\Controllers\Web\User\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +17,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('dashboard')->group(function () {
-    Route::get('/', [DashboardController::class, 'index']);
+Route::domain('127.0.0.1')->name('admin.')->middleware('auth')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::resources(
+        [
+            'user' => UserController::class,
+            'role' => RoleController::class,
+        ]
+    );
 });
+Auth::routes();
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

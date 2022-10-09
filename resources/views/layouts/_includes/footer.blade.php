@@ -3,5 +3,5 @@
                     href="{{ env('APP_URL') }}">BD
                     Couse List</a>.</strong> All rights
             reserved.
-            <span class="float-right d-none d-sm-block">Developed and Support By: NextBitLab</span>
+            <span class="float-right d-none d-sm-block">Design and Developed By: NextBitLab</span>
         </footer>
